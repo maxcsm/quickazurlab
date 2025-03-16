@@ -1,0 +1,322 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start" color="primary">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+    <ion-title > Inscription professionnelle </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  >
+<ion-row  >
+  <ion-col sizeLg="3" sizeMd="3" sizeXs="12" >
+  </ion-col>
+  <ion-col sizeLg="6" sizeMd="6" sizeXs="12" class="bloc">
+
+
+
+
+         <form [formGroup]="onRegisterForm1" (ngSubmit)="submitForm1()" novalidate class="list-form" *ngIf="form1">
+          <h2 > Informations professionnelle 1/4 </h2>
+
+
+
+         <ion-row >
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+            <ion-item  class="roundedInput">
+              <ion-label position="stacked">Civilité </ion-label>
+              <ion-select multiple="false" [(ngModel)]="salutation" formControlName="salutation">
+                <ion-select-option value="M.">M. </ion-select-option>
+                <ion-select-option value="Mme.">Mme. </ion-select-option>
+              </ion-select>
+            </ion-item>
+         </ion-col>
+        </ion-row>
+      
+           <ion-row >
+            <ion-col sizeLg="6" sizeMd="6" sizeXs="12" >
+               <ion-item class="roundedInput">
+                 <ion-label position="floating">Nom *</ion-label>
+                <ion-input inputmode="text" [(ngModel)]="lastname" formControlName="lastname">  </ion-input>
+              </ion-item>
+            </ion-col>
+         
+            <ion-col sizeLg="6" sizeMd="6" sizeXs="12" > 
+               <ion-item class="roundedInput">
+                <ion-label position="floating">Prénom * </ion-label>
+                <ion-input inputmode="text"[(ngModel)]="firstname" formControlName="firstname">  </ion-input>
+              </ion-item>
+            </ion-col>
+        </ion-row>
+        <ion-row >
+          <b>Addresse *</b> <br>
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+        <ion-item lines="full" *ngIf="showaddress==false" class="roundedInput">
+          <ion-input  debounce="200" (ionInput)="queryadress()" [(ngModel)]="queryadressinput" formControlName="queryadressinput" placeholder="Recherchez une adresse"  type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    
+        <div  *ngIf="showaddress==false">
+        <ion-list  *ngFor="let item of queryadressdata"  (click)="selectadress($event, item)" class="ion-padding" >
+          <ion-item button detail="true" detail-icon="location-outline"  lines="none">
+               <ion-label class="ion-text-wrap">
+                <b style="color:black;"> {{item.properties.formatted}}</b>     
+              </ion-label>
+            </ion-item>
+        </ion-list>
+        </div>
+    
+        <ion-row >
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+        <ion-item lines="full"  *ngIf="showaddress==true" class="roundedInput">
+          <ion-label position="floating"> 
+            <ion-icon name="person-outline"></ion-icon> Adresse postale </ion-label>
+          <ion-input  [(ngModel)]="address" formControlName="address" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+      
+      
+    <ion-row >
+      <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+        <ion-item lines="full"  *ngIf="showaddress==true" class="roundedInput">
+          <ion-label position="floating">  
+            <ion-icon name="person-outline"></ion-icon> CP </ion-label>
+          <ion-input  [(ngModel)]="cp" formControlName="cp" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+      
+       
+    <ion-row >
+      <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+        <ion-item lines="full"  *ngIf="showaddress==true" class="roundedInput">
+          <ion-label position="floating">  
+            <ion-icon name="person-outline"></ion-icon> Ville </ion-label>
+          <ion-input  [(ngModel)]="city" formControlName="city" type="text"></ion-input>
+        </ion-item>
+       
+      </ion-col>
+    </ion-row>
+      
+    <ion-row >
+      <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+        <ion-item lines="full"  *ngIf="showaddress==true" class="roundedInput">
+          <ion-label position="floating">  
+            <ion-icon name="person-outline"></ion-icon> Pays </ion-label>
+          <ion-input [(ngModel)]="country" formControlName="country" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+        <ion-row >
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >  
+           <b>E-mail *</b> <br>
+            <ion-item class="roundedInput">
+              <ion-label  position="floating">E-mail *</ion-label>
+              <ion-input inputmode="text" [(ngModel)]="email" formControlName="email">  </ion-input>
+            </ion-item>
+          </ion-col>
+         </ion-row>
+
+         <ion-row >
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="12" > 
+          <b>Téléphone *</b> <br>
+          <ion-item class="roundedInput">
+            <ion-label position="floating"> Mobile * </ion-label>
+            <ion-input type="number" [(ngModel)]="phone_mobile" placeholder="Mobile" formControlName="phone_mobile">  </ion-input>
+          </ion-item>
+        </ion-col>
+       </ion-row>
+
+       <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+        <b>  Mot de passe * </b> <br>
+          <ion-item class="roundedInput">
+            <ion-label color="dark" position="stacked">  <ion-icon name="lock-closed-outline"></ion-icon>  Mot de passe </ion-label>
+            <ion-input  type="password"  [(ngModel)]="password"  placeholder="Mot de passe" formControlName="password"></ion-input>
+          </ion-item>
+        </ion-col>
+       </ion-row>
+
+       <ion-row>
+        <ion-col>
+        <ion-button type="submit" color="primary" expand="block" [disabled]="!onRegisterForm1.valid">  Suivant   </ion-button>
+        </ion-col>
+        </ion-row>
+      </form>
+
+
+
+
+
+      <form [formGroup]="onRegisterForm2" (ngSubmit)="submitForm2()" novalidate class="list-form" *ngIf="form2">
+        <h2 color="primary"> Informations 2/4 </h2>
+   
+        <ion-row >
+          <b>Entreprise *</b> <br> 
+         </ion-row>
+    
+        <ion-row>
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+            <ion-item class="roundedInput">
+              <ion-label position="floating">Nom de l'entreprise *</ion-label>
+              <ion-input inputmode="text"[(ngModel)]="company" placeholder="Nom de l'entreprise" formControlName="company">  </ion-input>
+            </ion-item>
+          </ion-col>
+         </ion-row>
+
+
+         <ion-row >
+          <b>Mes services *</b> <br> 
+         </ion-row>
+  
+         <ion-row>
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+            <ion-item class="roundedInput">
+              <ion-label position="floating">Services *</ion-label>
+              <ion-input inputmode="text"[(ngModel)]="services" placeholder="Services" formControlName="services">  </ion-input>
+            </ion-item>
+          </ion-col>
+         </ion-row>
+    
+       <ion-row >
+        <b>Catégorie *</b> <br> 
+       </ion-row>
+
+       <ion-row >
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-item  class="roundedInput">
+            <ion-label position="stacked">Catégories</ion-label>
+            <ion-select multiple="false" okText="Ok" cancelText="Annuler"  [(ngModel)]="customer_type"  formControlName="customer_type" (ionChange)="categoryChange($event)" >
+              <ion-select-option *ngFor="let item of categories" value="{{item.tag_fr}}">{{item.tag_fr}}</ion-select-option >
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+     <ion-row>
+      <ion-col>
+      <ion-button type="submit" color="primary" expand="block" [disabled]="!onRegisterForm2.valid">  Suivant   </ion-button>
+      </ion-col>
+      </ion-row>
+    </form>
+
+
+
+      <form [formGroup]="onRegisterForm3" (ngSubmit)="submitForm3()" novalidate class="list-form" *ngIf="form3">
+        <h2 color="primary"> Mes reseaux 3/4 </h2>
+
+
+
+        <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-item class="roundedInput">
+            <ion-label position="floating">Facebook</ion-label>
+            <ion-input inputmode="text" [(ngModel)]="url_facebook" placeholder="Facebook" formControlName="url_facebook">  </ion-input>
+          </ion-item>
+        </ion-col>
+       </ion-row>
+
+       <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-item class="roundedInput">
+            <ion-label position="floating">Instagram </ion-label>
+            <ion-input inputmode="text" [(ngModel)]="url_instagram" placeholder="Instagram" formControlName="url_instagram">  </ion-input>
+          </ion-item>
+        </ion-col>
+       </ion-row>
+
+       <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-item class="roundedInput">
+            <ion-label position="floating">Tiktok </ion-label>
+            <ion-input inputmode="text" [(ngModel)]="url_tiktok" placeholder="Tiktok" formControlName="url_tiktok">  </ion-input>
+          </ion-item>
+        </ion-col>
+       </ion-row>
+
+
+       <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-item class="roundedInput">
+            <ion-label position="floating">Site web </ion-label>
+            <ion-input inputmode="text" [(ngModel)]="url_website" placeholder="Site web" formControlName="url_website">  </ion-input>
+          </ion-item>
+        </ion-col>
+       </ion-row>
+
+
+       <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-item class="roundedInput">
+            <ion-label position="floating">Whatsapp </ion-label>
+            <ion-input inputmode="text" [(ngModel)]="url_whatsapp" placeholder="Whatsapp" formControlName="url_whatsapp">  </ion-input>
+          </ion-item>
+        </ion-col>
+       </ion-row>
+
+    
+       <ion-row>
+        <ion-col>
+        <ion-button type="submit" color="primary" expand="block" [disabled]="!onRegisterForm3.valid">  Suivant   </ion-button>
+        </ion-col>
+        </ion-row>
+      </form>
+
+
+      <form [formGroup]="onRegisterForm4" (ngSubmit)="submitForm4()" novalidate class="list-form" *ngIf="form4">
+        <h2 color="primary"> Informations 4/4 </h2>
+
+
+     
+          <ion-row>
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+            <b> Mon entreprise *</b>
+            <ion-item class="roundedInput">
+              <ion-label  position="stacked">Description</ion-label>
+              <ion-textarea [autoGrow]="true" height=500px placeholder="J'ai crée mon entreprise n Guyane il y a 2 ans ..." [autoGrow]="true" [(ngModel)]="notes" formControlName="parcours">
+            </ion-textarea>
+            </ion-item>
+          </ion-col>
+         </ion-row>
+
+
+  
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-item >           
+           <small>J'accepte les conditions d'utilisation de cette application</small> 
+            <ion-checkbox slot="start" [(ngModel)]="check1"  formControlName="check1"></ion-checkbox>
+            </ion-item>
+        </ion-col>
+       </ion-row>
+
+ 
+
+
+       <ion-row>
+        <ion-col>
+        <ion-button type="submit" color="primary" expand="block" [disabled]="!onRegisterForm4.valid">  Suivant   </ion-button>
+        </ion-col>
+        </ion-row>
+      </form>
+
+
+</ion-col>  
+
+
+<ion-col sizeLg="3" sizeMd="3" sizeXs="12" >
+</ion-col>
+</ion-row>
+
+
+</ion-content>
+
+
+
+
+
+

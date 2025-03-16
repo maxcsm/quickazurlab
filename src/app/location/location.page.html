@@ -1,0 +1,69 @@
+<ion-header [translucent]="false"  class="hidden-xs hidden-lg" >
+  <ion-toolbar mode="ios" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+
+
+<ion-content >
+
+
+  <ion-row justify-content-center>
+ 
+
+    <ion-col align-self-center size-md="12" size-lg="12" size-xs="12"> 
+
+
+
+
+      <ion-row *ngFor="let item of posts">
+          <ion-card style="background-color: white;color:black; width: 100%;"  >
+            <ion-card-header style="background-color: white;color:black;">
+          
+              <ion-card-title style="background-color: white;color:black;">{{item.title}}</ion-card-title>
+              {{item.adress}}  {{item.cp}}  <br> {{item.city}}
+            </ion-card-header>
+          </ion-card>
+      
+
+
+          <ion-card style="background-color: white;color:black; width: 100%;"  >
+            <ion-card-header style="background-color: white;color:black;">
+          
+              Volume :  {{item.volume}} m3 <br>
+              Forme :  {{item.selectedForm }} <br>
+              Type de fond :  {{item.selectedType }} <br>
+              Type de filtre :   {{item.selectedTypeFiltre }}  <br>
+              Type de revêtement :   {{item. selectedTypeRevetement }} <br>
+              Type de désinfection :  {{item.selectedTypeDesinfection }}<br>
+            </ion-card-header>
+          </ion-card>
+      
+      
+      </ion-row>
+
+      <ion-button   color="primary" expand="block" color="warning" class="ion-text-wrap"  style="text-transform:none!important;" > Ajouter des donnnées </ion-button>
+
+
+      <ion-row *ngFor="let item of posts">
+
+        <ion-card style="background-color: white;color:black; width: 100%;"  >
+          <ion-card-header style="background-color: white;color:black;">
+            Mes derniers rélevés : <br>
+          </ion-card-header>
+        </ion-card>
+    </ion-row>
+
+    
+   
+    </ion-col>
+
+  </ion-row>
+</ion-content>

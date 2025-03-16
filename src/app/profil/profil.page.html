@@ -1,0 +1,104 @@
+
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" >
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+    <ion-title > Profil </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content responsive-sm  >
+<ion-row>
+ 
+
+  <ion-col sizeLg="12" sizeMd="12" sizeXs="12"   >
+
+    <ion-list  >
+      <ion-item >
+       <b> Mon profil </b>
+      </ion-item>
+
+      
+      <ion-item [routerLink]="['/my-address']">
+        <ion-icon color="primary" slot="start" name="list-circle" size="large"></ion-icon>
+        Mes coordonnées  
+      </ion-item>
+    </ion-list>
+      <ion-list  style="margin-top: 20px;" >
+
+
+      <ion-item *ngIf="role==2" >
+        <b>   Mon entreprise</b>
+      </ion-item>
+   
+      <ion-item [routerLink]="['/my-company']" *ngIf="role==2"> 
+        <ion-icon color="secondary" slot="start" name="home" size="large"></ion-icon>
+        A propos
+      </ion-item>
+
+
+      <ion-item [routerLink]="['/my-pictures']" *ngIf="role==2">
+        <ion-icon color="secondary" slot="start" name="images" size="large"></ion-icon>
+       Mes photos
+      </ion-item>
+
+
+      <ion-item [routerLink]="['/my-social']" *ngIf="role==2">
+        <ion-icon color="secondary" slot="start" name="share-social" size="large"></ion-icon>
+       Mes reseaux
+      </ion-item>
+
+
+      <ion-item [routerLink]="['/my-hours']" *ngIf="role==2">
+        <ion-icon color="secondary" slot="start" name="time" size="large"></ion-icon>
+        Mes horaires
+       </ion-item>
+
+      <ion-item [routerLink]="['/my-files']" *ngIf="role==2">
+        <ion-icon color="secondary" slot="start" name="file-tray-full" size="large"></ion-icon>
+        Mes fichiers
+       </ion-item>
+      </ion-list>
+
+      <ion-list  style="margin-top: 20px;" >
+       <ion-item >
+        <b>   A propos de QuickAzurLab</b>
+      </ion-item>
+
+      <ion-item [routerLink]="['/contact']">
+        <ion-icon color="primary" slot="start" name="mail" size="large"></ion-icon>
+      Nous contacter 
+       </ion-item>
+
+ 
+      <ion-item href="https://quickazur.fr/politique-de-confidentialite/" target="_blank">
+        <ion-icon color="primary" slot="start" name="bulb" size="large"></ion-icon>
+      Politique de confidentialité
+      </ion-item>
+    </ion-list>
+
+    <div style="padding-top: 20px;">
+      <ion-button icon-left color="primary" expand="block"   (click)="delete()"  tappable>
+      <b> Supprimer mon compte </b>
+      </ion-button>
+      </div>
+
+
+  <ion-list>
+    <ion-button (click)="updatePro()" color="secondary" expand="block" 
+     style="text-transform:none!important;"> Devenir Professionnel 
+    </ion-button>
+  </ion-list>
+
+
+
+
+</ion-col>  
+ 
+</ion-row>
+</ion-content>
+
+

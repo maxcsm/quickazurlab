@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Recherche</ion-title>
+
+
+  <ion-buttons slot="end" >
+    <ion-button  (click)="cancel()" > Annuler  </ion-button>
+  </ion-buttons>
+
+</ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+
+  <ion-list lines="none"  >
+                    
+           <ion-row >
+              <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+                <ion-item  class="roundedInput">
+                  <ion-label position="stacked">Catégories</ion-label>
+                  <ion-select multiple="false" okText="Ok" cancelText="Annuler"  [(ngModel)]="filter_category" (ionChange)="categoryChange($event)" >
+                    <ion-select-option  value=""> Toutes les catégories </ion-select-option >
+                    <ion-select-option *ngFor="let item of categories" value="{{item.tag_fr}}">{{item.tag_fr}}</ion-select-option >
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+
+            <ion-item>
+              <ion-label position="stacked">Distance {{distance}} km </ion-label>
+              <ion-range min="0" max="500" step="50" knobs="true"  [(ngModel)]="distance" snaps="true"></ion-range>
+            </ion-item>
+
+
+            <ion-row  (click)="openFilterLocation()">
+              <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+                <ion-item  class="roundedInput">
+                  <ion-label position="stacked">Zone de recherche</ion-label>
+                 {{filter_location_title}}
+                </ion-item>
+              </ion-col>
+            </ion-row>
+ 
+            <ion-button color="secondary"  expand="full"  (click)="doSave()">Rechercher</ion-button>
+
+          </ion-list>
+      
+   
+</ion-content>

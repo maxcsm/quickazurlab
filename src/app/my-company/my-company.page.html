@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>  Mon entreprise </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+<ion-row>
+  <ion-col sizeLg="6" sizeMd="6" sizeXs="12" >
+
+
+    <ion-list lines="none"  >
+      <ion-row >
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+          <ion-row >
+            <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+              <ion-item class="roundedInput">
+                <ion-label position="stacked">Nom entreprise</ion-label>
+                <ion-label color="dark" position="stacked">Nom entreprise</ion-label>
+                <ion-input inputmode="text"[(ngModel)]="company" placeholder="Nom entreprise">  </ion-input>
+              </ion-item>
+            </ion-col>
+           </ion-row>
+                    
+           <ion-row >
+              <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+                <ion-item  class="roundedInput">
+                  <ion-label position="stacked">Catégorie</ion-label>
+                  <ion-select multiple="false" okText="Ok" cancelText="Annuler"  [(ngModel)]="customer_type" (ionChange)="handleChange($event)" >
+                    <ion-select-option *ngFor="let item of categories" >{{item.tag_fr}}</ion-select-option >
+                  </ion-select>
+                </ion-item>
+
+
+
+
+
+
+              </ion-col>
+            </ion-row>
+    
+ 
+         <ion-row >
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+            <ion-item class="roundedInput">
+              <ion-label position="stacked">Services </ion-label>
+              <ion-textarea placeholder="Ajoutez vos services ici" [autoGrow]="true" [(ngModel)]="notes">
+            </ion-textarea>
+            </ion-item>
+          </ion-col>
+         </ion-row>
+
+
+          <ion-item >
+            <div class="item-note" slot="end">
+            <ion-button color="light" size="medium" (click)="cancel()" >Annuler </ion-button>
+            <ion-button color="secondary" size="medium" (click)="doSave()">Enregistrer</ion-button>
+            </div>
+           </ion-item>
+        </ion-col>
+    </ion-row>
+    </ion-list>
+    
+    
+  </ion-col>
+      
+    <ion-col sizeLg="6" sizeMd="6" sizeXs="12" >
+    </ion-col>
+    </ion-row>
+</ion-content>

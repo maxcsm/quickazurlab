@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+    <ion-title >
+    Mes favoris
+     </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content>
+    <ion-list>
+      <ion-item button *ngFor="let item of posts">
+        <ion-avatar slot="start"  (click)="edit($event, item)">
+          <img src="{{item.location_id.user_avatar}}">
+        </ion-avatar>
+
+
+        <ion-label  (click)="edit($event, item)">
+          <ion-text>
+            
+            <h2>{{item.location_id.firstname}}  {{item.location_id.lastname}}</h2>
+            <ion-badge > {{item.location_id.customer_type}}</ion-badge>
+          </ion-text>
+        </ion-label>
+        <ion-button ion-button outline item-end small color="light" (click)="delete($event, item)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="ion-margin-top ion-text-center" *ngIf="posts==0"  >
+      <img src="assets/empty.png" width="200px">
+      <h1>Oups !</h1>
+      <p>Aucun profil favoris trouvé</p>
+    
+    </ion-list>
+   
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Chargement..."> </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+
+
+
+
+
+
+

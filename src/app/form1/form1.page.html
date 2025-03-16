@@ -1,0 +1,223 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Creation nouveau contrat </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="ion-padding">
+<ion-grid>
+
+  <ion-row>
+  <ion-col sizeLg="8" sizeMd="8" sizeXs="12" >
+
+
+        <ion-list lines="none" style="margin-top: 20px;"  >
+          <ion-row >
+            <ion-col sizeLg="9" sizeMd="9" sizeXs="12" >
+              <ion-item  *ngFor="let item of client"  lines="none">    
+                  <ion-label> 
+                  <b>  Client </b>   <br>
+                  <b>  id: {{item.id}}</b>   <br>
+                  entreprise: <b> {{item.company}}</b>   <br>
+                  <b> {{item.salutation}} {{item.firstname}} {{item.lastname}}</b>  <br>
+                  <b>  {{item.address}} </b><br>
+                  <b>  {{item.cp}} {{item.city}}</b> <br>
+                  <b>  {{item.state}} {{item.country}}</b> <br>
+                  </ion-label> 
+              </ion-item>
+              </ion-col>   
+              <ion-col sizeLg="3" sizeMd="3" sizeXs="12" >  
+                <ion-item  *ngFor="let item of client"  lines="none">      
+                <ion-button  color="medium" slot="end" size="small"shape="round" *ngIf="item.customer_type=='business'" > Entreprise </ion-button>
+                <ion-button  color="medium" slot="end" size="small"shape="round" *ngIf="item.customer_type=='individual'" > Particulier </ion-button>
+              </ion-item>
+            </ion-col>
+        </ion-row>
+  </ion-list>
+
+
+
+  <ion-list style="margin-top: 20px;" >
+
+    <ion-row  >
+      <ion-col size="12" padding >
+            <ion-list>
+              <ion-item>
+                <ion-label> Prestations </ion-label>
+                <ion-select placeholder="Sélectionnez les situations"  (ionChange)="handleChange($event)" [(ngModel)]="label11">
+                  <ion-select-option value="2">prestation(s) annuel</ion-select-option>
+                  <ion-select-option value="1">traitement unique en</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row  >
+      <ion-col size="6" padding >
+              <ion-label >Nombre de prestations annuel / Nombre applications pour traitement unique</ion-label>
+              <ion-item class="roundedInput">
+              <ion-input inputmode="text"[(ngModel)]="label10" placeholder="Nombre">  </ion-input>
+             </ion-item>
+      </ion-col>
+
+      <ion-col size="6" padding >
+     
+</ion-col>
+    </ion-row>
+
+
+
+ 
+    </ion-list>
+
+
+    <ion-list style="margin-top: 20px;" >
+    <ion-row  >
+      <ion-col size="12" padding >
+            <ion-list>
+              <ion-item>
+                <ion-label> Situation rencontrée</ion-label>
+                <ion-select placeholder="Sélectionnez les situations" [multiple]="true" (ionChange)="handleChange($event)" [(ngModel)]="label1">
+                  <ion-select-option value="Punaise">Punaise</ion-select-option>
+                  <ion-select-option value="Puce">Puce</ion-select-option>
+                  <ion-select-option value="Cafard">Cafard</ion-select-option>
+                  <ion-select-option value="Rat">Rat</ion-select-option>
+                  <ion-select-option value="Souris">Souris</ion-select-option>
+                  <ion-select-option value="Guepes">Guepes</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+      </ion-col>
+    </ion-row>
+    </ion-list>
+
+
+
+
+  
+    <ion-list style="margin-top: 20px;" >
+      <ion-row  >
+        <ion-col size="12" padding >
+              <ion-list>
+                <ion-item>
+                  <ion-label> Zone(s) de traitement </ion-label>
+                  <ion-select placeholder="Sélectionnez les situations" [multiple]="true" (ionChange)="handleChange($event)" [(ngModel)]="label3">
+                    <ion-select-option value="Chambre">Chambre</ion-select-option>
+                    <ion-select-option value="Cuisine">Cuisine</ion-select-option>
+                    <ion-select-option value="Bureau">Bureau</ion-select-option>
+                    <ion-select-option value="Couloir">Couloir</ion-select-option>
+                    <ion-select-option value="Entrée">Entrée</ion-select-option>
+                    <ion-select-option value="Cave">Cave</ion-select-option>
+                    <ion-select-option value="Toilette">Toilette</ion-select-option>
+                    <ion-select-option value="Escalier">Escalier</ion-select-option>
+                    <ion-select-option value="Chaufferie">Chaufferie</ion-select-option>
+                    <ion-select-option value="Comptoir">Comptoir</ion-select-option>
+                    <ion-select-option value="Stock">Stock</ion-select-option>
+                    <ion-select-option value="Poubelle">Poubelle</ion-select-option>
+                    <ion-select-option value="Cabine"> Cabine</ion-select-option>
+                    <ion-select-option value="Salle">Salle</ion-select-option>
+                    <ion-select-option value="Jardin">Jardin</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+        </ion-col>
+      </ion-row>
+      </ion-list>
+
+
+  
+      <ion-list style="margin-top: 20px;" >
+        <ion-row  >
+          <ion-col size="6" padding >
+                  <ion-label >Période reconductible</ion-label>
+                  <ion-item class="roundedInput">
+                  <ion-input inputmode="text"[(ngModel)]="label4" placeholder="Durée">  </ion-input>
+                 </ion-item>
+          </ion-col>
+
+          <ion-col size="6" padding >
+            <ion-label > Montant forfaitaire € htva </ion-label>
+            <ion-item class="roundedInput">
+            <ion-input inputmode="number"[(ngModel)]="label5" placeholder="Montant">  </ion-input>
+           </ion-item>
+    </ion-col>
+        </ion-row>
+
+
+        <ion-row  >
+          <ion-col size="6" padding >
+                  <ion-label >Paiement tous les</ion-label>
+                  <ion-item class="roundedInput">
+                  <ion-input inputmode="number"[(ngModel)]="label6" placeholder="Récurrences">  </ion-input>
+                 </ion-item>
+          </ion-col>
+
+          <ion-col size="6" padding >
+            <ion-label > Durée minimale </ion-label>
+            <ion-item class="roundedInput">
+            <ion-input inputmode="number"[(ngModel)]="label7" placeholder=" 1 an">  </ion-input>
+           </ion-item>
+    </ion-col>
+        </ion-row>
+
+
+        <ion-row  >
+          <ion-col size="6" padding >
+                  <ion-label >Expiration période minimale an(s) </ion-label>
+                  <ion-item class="roundedInput">
+                  <ion-input inputmode="number"[(ngModel)]="label8" placeholder="1">  </ion-input>
+                 </ion-item>
+          </ion-col>
+
+          <ion-col size="6" padding >
+            <ion-label > Paiement  jours réception (jours) </ion-label>
+            <ion-item class="roundedInput">
+            <ion-input inputmode="number"[(ngModel)]="label9" placeholder="15">  </ion-input>
+           </ion-item>
+        </ion-col>
+        </ion-row>
+        </ion-list>
+  
+  
+
+    <ion-list style="margin-top: 20px;" >
+      <ion-row>
+        <ion-col size="6" padding >
+          <h5  *ngIf="imgsign2" class="text-center">Signature Technicien</h5>
+          <div *ngFor="let item of tech" >
+            <ion-button *ngIf="imgsign2==null" (click)="openModalTech()" color="primary"><ion-icon name="add-circle"></ion-icon>
+              Ajouter la signature technicien 
+             </ion-button>
+            <h5 class="text-center"> <b>{{item.firstname}} {{item.lastname}} </b> </h5>
+            </div>
+            <img *ngIf="imgsign2" [src]="imgsign2"/>
+         </ion-col>
+        <ion-col size="6" padding >
+          <h5  *ngIf="imgsign" class="text-center">Signature Client</h5>
+          <div *ngFor="let item of client" >
+            <ion-button *ngIf="imgsign==null" (click)="openModal()" color="primary"><ion-icon name="add-circle"></ion-icon>
+              Ajouter la signature client
+             </ion-button>
+            <h5 class="text-center"> <b>{{item.firstname}} {{item.lastname}} </b> </h5>
+            </div>
+            <img *ngIf="imgsign" [src]="imgsign"/>
+         </ion-col>
+      </ion-row>
+  </ion-list>
+
+
+    <ion-button size="full" expand="full"  shape="round" color="danger" (click)="savePdf()"  *ngIf="imgsign && imgsign && label1!==null && label3!==null && label11!==null">
+     Enregistrement PDF<img src="../assets/icon/pdf.png"  >
+    </ion-button>
+
+  </ion-col>
+
+  <ion-col sizeLg="4" sizeMd="4" sizeXs="12" >
+
+  </ion-col>
+</ion-row>
+  </ion-grid>
+</ion-content>

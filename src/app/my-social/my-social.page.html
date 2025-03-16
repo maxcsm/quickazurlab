@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>  Mes reseaux</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+<ion-row>
+  <ion-col sizeLg="6" sizeMd="6" sizeXs="12" >
+
+
+
+ 
+
+
+
+    <ion-list lines="none"  >
+      <ion-row >
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+          <ion-row >
+            <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+              <ion-label color="secondary" position="stacked">Facebook</ion-label>
+              <ion-item class="roundedInput">
+                <ion-icon color="primary" name="logo-facebook" slot="start"></ion-icon>
+                <ion-input inputmode="text"[(ngModel)]="url_facebook" placeholder="Facebook">  </ion-input>
+              </ion-item>
+            </ion-col>
+           </ion-row>
+
+
+           <ion-row >
+            <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+              <ion-label color="secondary" position="stacked">Instagram</ion-label>
+              <ion-item class="roundedInput">
+                <ion-icon color="primary" name="logo-instagram"></ion-icon>
+                <ion-input inputmode="text" [(ngModel)]="url_instagram" placeholder="Instagram">  </ion-input>
+              </ion-item>
+            </ion-col>
+           </ion-row>
+                    
+
+
+           <ion-row >
+            <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+              <ion-label color="secondary" position="stacked">Tiktok</ion-label>
+              <ion-item class="roundedInput">
+                <ion-icon color="primary" name="logo-tiktok"></ion-icon>
+                <ion-input inputmode="text" [(ngModel)]="url_tiktok" placeholder="Tiktok">  </ion-input>
+              </ion-item>
+            </ion-col>
+           </ion-row>
+
+
+
+           <ion-row >
+            <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+              <ion-label color="secondary" position="stacked">Site web </ion-label>
+              <ion-item class="roundedInput">
+                <ion-icon color="primary" name="tv-outline"></ion-icon>
+                <ion-input inputmode="text" [(ngModel)]="url_website" placeholder="Site web ">  </ion-input>
+              </ion-item>
+            </ion-col>
+           </ion-row>
+         
+         
+
+
+
+           <ion-row >
+            <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+              <ion-label color="secondary" position="stacked">Whatsapp </ion-label>
+              <ion-item class="roundedInput">
+                <ion-icon color="primary" name="logo-whatsapp"></ion-icon>
+                <ion-input inputmode="text" [(ngModel)]="url_whatsapp" placeholder="+336... ">  </ion-input>
+              </ion-item>
+            </ion-col>
+           </ion-row>
+         
+         
+
+
+
+       
+       
+       
+          <ion-item >
+            <div class="item-note" slot="end">
+            <ion-button color="light" size="medium" (click)="cancel()" >Annuler </ion-button>
+            <ion-button color="secondary" size="medium" (click)="doSave()">Enregistrer</ion-button>
+            </div>
+           </ion-item>
+        </ion-col>
+    </ion-row>
+    </ion-list>
+    
+    
+  </ion-col>
+      
+    <ion-col sizeLg="6" sizeMd="6" sizeXs="12" >
+    </ion-col>
+    </ion-row>
+</ion-content>

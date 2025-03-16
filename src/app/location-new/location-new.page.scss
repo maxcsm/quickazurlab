@@ -1,0 +1,6 @@
+.custom-checkbox {
+    --size: 24px; /* Adjust size */
+    width: var(--size);
+    height: var(--size);
+    --border-radius: 0px; /* Ensure it's square */
+  }

@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" color="primary">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+    <ion-title > Inscription Professionnelle </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  >
+<ion-row  >
+  <ion-col sizeLg="3" sizeMd="3" sizeXs="12" >
+  </ion-col>
+  <ion-col sizeLg="6" sizeMd="6" sizeXs="12" class="bloc">
+
+
+
+
+         <form [formGroup]="onRegisterForm1" (ngSubmit)="submitForm1()" novalidate class="list-form" *ngIf="form1">
+         <ion-row >
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+            <ion-item  class="roundedInput">
+              <ion-label position="stacked">Civilité </ion-label>
+              <ion-select multiple="false" [(ngModel)]="salutation" formControlName="salutation">
+                <ion-select-option value="M.">M. </ion-select-option>
+                <ion-select-option value="Mme.">Mme. </ion-select-option>
+              </ion-select>
+            </ion-item>
+         </ion-col>
+        </ion-row>
+      
+           <ion-row >
+            <ion-col sizeLg="6" sizeMd="6" sizeXs="12" >
+               <ion-item class="roundedInput">
+                 <ion-label position="floating">Nom *</ion-label>
+                <ion-input inputmode="text" [(ngModel)]="lastname" formControlName="lastname">  </ion-input>
+              </ion-item>
+            </ion-col>
+         
+            <ion-col sizeLg="6" sizeMd="6" sizeXs="12" > 
+               <ion-item class="roundedInput">
+                <ion-label position="floating">Prénom * </ion-label>
+                <ion-input inputmode="text"[(ngModel)]="firstname" formControlName="firstname">  </ion-input>
+              </ion-item>
+            </ion-col>
+        </ion-row>
+
+
+        <ion-row >
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >  
+           <b>E-mail *</b> <br>
+            <ion-item class="roundedInput">
+              <ion-label  position="floating">E-mail *</ion-label>
+              <ion-input inputmode="text" [(ngModel)]="email" formControlName="email">  </ion-input>
+            </ion-item>
+          </ion-col>
+         </ion-row>
+
+
+
+       <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+        <b>  Mot de passe * </b> <br>
+          <ion-item class="roundedInput">
+            <ion-label color="dark" position="stacked">  <ion-icon name="lock-closed-outline"></ion-icon>  Mot de passe </ion-label>
+            <ion-input  type="password"  [(ngModel)]="password"  placeholder="Mot de passe" formControlName="password"></ion-input>
+          </ion-item>
+        </ion-col>
+       </ion-row>
+
+       <ion-row>
+        <ion-col>
+        <ion-button type="submit" color="primary" expand="block" [disabled]="!onRegisterForm1.valid">  Suivant   </ion-button>
+        </ion-col>
+        </ion-row>
+      </form>
+
+
+
+
+
+
+
+
+</ion-col>  
+
+
+<ion-col sizeLg="3" sizeMd="3" sizeXs="12" >
+</ion-col>
+</ion-row>
+
+
+</ion-content>
+
+
+
+
+
+

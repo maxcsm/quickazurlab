@@ -1,0 +1,105 @@
+
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+    <ion-title > Nous contacter </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid >
+
+
+
+    <ion-row >
+      <ion-col sizeLg="12" sizeMd="12" sizeXs="12" class="ion-padding">  
+     
+
+        Une question, une demande ou un besoin spécifique ?<br> Remplissez le formulaire ci-dessous :  
+         <br> 
+        </ion-col>
+      </ion-row>
+
+
+
+     <ion-row>
+     <ion-col sizeLg="12" sizeMd="12" sizeXs="12" style="border: 2px;border-width: 2px;">
+
+    <ion-list lines="none"  >
+
+      <form [formGroup]="onContactForm" novalidate class="list-form">
+      <ion-row >
+
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+          <ion-row >
+            <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+                <ion-label  position="stacked" color="primary">Object de la demande </ion-label>
+                <ion-select [(ngModel)]="subject" formControlName="subject">
+                  <ion-select-option value="Assistance" > Assistance</ion-select-option>
+                  <ion-select-option value="Informations" > Informations</ion-select-option>
+                  <ion-select-option value="Inscription" > Inscription</ion-select-option>
+                </ion-select>
+
+              </ion-col>
+           </ion-row>
+
+         <ion-row >
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+            <ion-item class="roundedInput">
+              <ion-label  position="stacked">Votre message </ion-label>
+              <ion-textarea placeholder="Ajoutez votre message ici..." [autoGrow]="true" [(ngModel)]="content" formControlName="content" style="height: 50px;">
+            </ion-textarea>
+            </ion-item>
+          </ion-col>
+         </ion-row>
+
+
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row >
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+          
+
+
+
+
+
+
+            <ion-button color="primary" expand="block" size="medium" style="text-transform:none!important;" [disabled]="!onContactForm.valid" (click)="doSave()"> Envoyer </ion-button>
+
+        </ion-col>
+    </ion-row>
+  </form>
+  </ion-list>
+
+
+
+  <ion-row >
+    <ion-col sizeLg="12" sizeMd="12" sizeXs="12" class="ion-padding">  
+   
+      Ou contactez-nous directement par e-mail à contact[a]quickazur.fr  <br> 
+      Notre équipe vous répondra rapidement.  
+      
+       <br> 
+      </ion-col>
+    </ion-row>
+
+
+
+
+
+
+
+
+  </ion-col>
+
+
+   </ion-row>
+ </ion-grid>
+ </ion-content>

@@ -1,0 +1,71 @@
+
+  
+
+
+
+
+
+
+
+
+  <div  *ngIf="selectedForm==='rectangulaire'||'ovale'||'haricot' || 'formelibre'" >
+{{selectedType}}
+{{selectedForm}}
+    FORME 4 
+     <ion-row  >
+      <ion-col size="12" padding >
+        <ion-label >Largeur en m</ion-label>
+        <ion-item class="roundedInput">
+        <ion-input inputmode="number"[(ngModel)]="largeur" placeholder="en m">  </ion-input>
+       </ion-item>
+     </ion-col>
+    </ion-row>
+
+
+    <ion-row  >
+      <ion-col size="12" padding >
+        <ion-label >Longueur en m</ion-label>
+        <ion-item class="roundedInput">
+        <ion-input inputmode="number"[(ngModel)]="longueur" placeholder="en m">  </ion-input>
+       </ion-item>
+     </ion-col>
+    </ion-row>
+
+
+    <div  *ngIf="selectedType === 'plat'" >
+      <ion-row  >
+       <ion-col size="12" padding >
+         <ion-label > Profondeur en m</ion-label>
+         <ion-item class="roundedInput">
+         <ion-input inputmode="number"[(ngModel)]="profondeur" placeholder="en m">  </ion-input>
+        </ion-item>
+      </ion-col>
+     </ion-row>
+    </div>
+
+
+
+    <div  *ngIf="selectedType === 'double'||'evolutif'" >
+      <ion-row  >
+        <ion-col size="12" padding >
+          <ion-label >Profondeur min en m</ion-label>
+          <ion-item class="roundedInput">
+          <ion-input inputmode="number"[(ngModel)]="profondeurMin" placeholder="en m">  </ion-input>
+         </ion-item>
+       </ion-col>
+      </ion-row>
+  
+  
+      <ion-row  >
+        <ion-col size="12" padding >
+          <ion-label> Profondeur max en m </ion-label>
+          <ion-item class="roundedInput">
+          <ion-input inputmode="number"[(ngModel)]="profondeurMax" placeholder="en m">  </ion-input>
+         </ion-item>
+       </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+
+

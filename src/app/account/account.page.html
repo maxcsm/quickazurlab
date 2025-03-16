@@ -1,0 +1,350 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+    <ion-title > Utilisateur </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content responsive-sm  >
+
+ 
+
+<ion-row>
+
+<ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+  <ion-list lines="none"  *ngFor="let item of posts">
+
+
+
+    <ion-row>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="4" >
+        <div style="padding-top:30%;">
+          <ion-button color="warning" class="ion-text-wrap"  style="text-transform:none!important;" (click)="share()"> Partagez<ion-icon name="share-social-outline"></ion-icon></ion-button>
+        <ion-button color="warning" class="ion-text-wrap"  style="text-transform:none!important;" (click)="addFavoris()"> Ajouter favoris <ion-icon name="heart-circle-outline"></ion-icon></ion-button>
+
+      </div>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="4" >
+        <div class="vertical-padding">
+          <img src="{{item.user_avatar}}" alt="" class="image-round">
+          <div class="ion-text-center">
+            <h4 class="text-white"> {{item.salutation}} {{item.firstname}} {{item.lastname}}</h4>
+          </div>
+          <div class="ion-text-center">
+            <span class="text-white text-job">      {{item.company}}</span>
+            <span class="text-white text-job"> {{item.cp}} {{item.city}}</span>
+          </div>
+          <div class="ion-text-center">
+            <div style="font-size: 15px;color:green" class="text-white text-job"> Entreprise certifiée <ion-icon name="checkmark-done-circle-outline"></ion-icon></div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="4" >
+
+        <div style="padding-top:30%;">
+
+
+        
+        <ion-button color="warning" class="ion-text-wrap"  style="text-transform:none!important;" (click)="send($event, item)"> Envoyer une demande</ion-button>
+        <ion-button color="warning" class="ion-text-wrap" style="text-transform:none!important;" href="tel:{{item.phone_mobile}}"> Appeler {{item.phone_mobile}}</ion-button>
+      </div>
+        </ion-col>
+      </ion-row>
+
+
+       
+        
+ 
+        
+          <ion-segment [(ngModel)]="segment" color="primary">
+    
+            <ion-segment-button value="about" color="primary">
+            A propos
+            </ion-segment-button>
+            <ion-segment-button value="avis" color="secondary">
+              Avis
+            </ion-segment-button>
+            <ion-segment-button value="contact">
+              Contact
+            </ion-segment-button>
+        
+          </ion-segment>
+        
+        
+          <div [ngSwitch]="segment">
+
+              <ion-card mode="ios"  *ngSwitchCase="'about'">
+                <ion-card-content class="ion-no-padding">
+                  <ion-list class="ion-no-padding" lines="none">
+                    <ion-item  *ngFor="let item of posts"  lines="none">    
+                      <ion-label> 
+                      <b> {{item.company}}</b>   <br>
+                      <b> {{item.customer_type}}</b>   <br>
+                      <b> {{item.salutation}} {{item.firstname}} {{item.lastname}}</b>  <br>
+                      <b>  {{item.address}} </b><br>
+                      <b>  {{item.cp}} {{item.city}}</b> <br>
+                 
+                  
+                      </ion-label> 
+                      </ion-item>
+                  </ion-list>
+                </ion-card-content>
+              </ion-card>
+              <ion-card mode="ios"  *ngSwitchCase="'about'">
+                <ion-card-content class="ion-no-padding">
+              <swiper-container  slides-per-view="1" speed="200" loop="true" autoplay="true" [pagination]="true">
+                <swiper-slide class="ion-text-center" *ngFor="let item of images">
+                  <img  src="{{item.image}}" *ngIf="item.image!==''"  >
+                </swiper-slide>
+              </swiper-container>
+       
+
+            </ion-card-content>
+          </ion-card>
+
+
+
+              <ion-card mode="ios"  *ngSwitchCase="'about'">
+                <ion-card-content class="ion-no-padding">
+                  <ion-list class="ion-no-padding" lines="none">
+                    <ion-item   lines="none">   
+                    <ion-label color="primary"> 
+                      Téléphone 
+                     </ion-label> 
+                    </ion-item>
+
+
+                    <ion-item  *ngFor="let item of posts"  lines="none">    
+                      <ion-label  class="ion-text-wrap" >
+                        <b> {{item.phone_mobile}} </b>
+                      </ion-label>
+                    
+                      </ion-item>
+                  </ion-list>
+                </ion-card-content>
+              </ion-card>
+
+
+
+              <ion-card mode="ios"  *ngSwitchCase="'about'">
+                <ion-card-content class="ion-no-padding">
+                  <ion-list class="ion-no-padding" lines="none">
+                    <ion-item   lines="none">   
+                    <ion-label color="primary"> 
+                      E-mail
+                     </ion-label> 
+                    </ion-item>
+
+
+                    <ion-item  *ngFor="let item of posts"  lines="none">    
+                      <ion-label  class="ion-text-wrap" >
+                        <b> {{item.email}} </b>
+                      </ion-label>
+                    
+                      </ion-item>
+                  </ion-list>
+                </ion-card-content>
+              </ion-card>
+
+
+
+              
+              <ion-card mode="ios"  *ngSwitchCase="'about'">
+                <ion-card-content class="ion-no-padding">
+                  <ion-list class="ion-no-padding" lines="none">
+                    <ion-item   lines="none">   
+                    <ion-label color="primary"> 
+                      Services 
+                     </ion-label> 
+                    </ion-item>
+
+
+                    <ion-item  *ngFor="let item of posts"  lines="none">    
+                      <ion-label  class="ion-text-wrap" >
+                      <b>{{item.services}} </b>
+                      </ion-label>
+                    
+                      </ion-item>
+                  </ion-list>
+                </ion-card-content>
+              </ion-card>
+
+              <ion-card mode="ios"  *ngSwitchCase="'about'">
+                <ion-card-content class="ion-no-padding">
+                  <ion-list class="ion-no-padding" lines="none">
+
+
+                    <ion-item   lines="none">   
+                      <ion-label color="primary"> 
+                        Description 
+                       </ion-label> 
+                      </ion-item>
+
+
+                    <ion-item  *ngFor="let item of posts"  lines="none">    
+                  
+                    
+                  <ion-label  class="ion-text-wrap" >
+                      <b>{{item.notes}} </b>
+                      </ion-label>
+                   
+                      </ion-item>
+                  </ion-list>
+                </ion-card-content>
+
+
+           
+           
+
+      
+                <ion-card-content class="ion-no-padding">
+                  <ion-list class="ion-no-padding" lines="none">
+                    <ion-item  *ngFor="let item of posts"  lines="none">    
+               
+                      Mise à jour | le {{item.updated_at| date: 'dd/MM/yyyy'}}
+                      </ion-item>
+                  </ion-list>
+                </ion-card-content>
+              </ion-card>
+
+
+
+
+              <ion-card mode="ios"  *ngSwitchCase="'avis'">
+
+
+                <ion-list class="ion-margin-top ion-text-center" *ngIf="notes==0"  >
+                  <img src="assets/empty.png" width="200px">
+                  <h1>Oups !</h1>
+                  <p>Aucun avis trouvé</p>
+                
+                </ion-list>
+                <ion-item button *ngFor="let item of notes">
+                  <ion-label>
+                    <div *ngIf="item.note==null"> 
+                    <span style="font-size:100%;">&#9734;</span>
+                    <span style="font-size:100%;">&#9734;</span>
+                    <span style="font-size:100%;">&#9734;</span>
+                    <span style="font-size:100%;">&#9734;</span>
+                    <span style="font-size:100%;">&#9734;</span>
+                 
+                    </div>
+              
+              
+                    <div *ngIf="item.note==1"> 
+                    <span style="font-size:100%;color:#ffc409">&bigstar;</span>
+                    <span style="font-size:100%;">&bigstar;</span>
+                    <span style="font-size:100%;">&bigstar;</span>
+                    <span style="font-size:100%;">&bigstar;</span>
+                    <span style="font-size:100%;">&bigstar;</span>
+                    </div>
+              
+                    <div *ngIf="item.note==2"> 
+                      <span style="font-size:100%;color:#ffc409">&bigstar;</span>
+                      <span style="font-size:100%;color:#ffc409">&bigstar;</span>
+                    <span style="font-size:100%;">&bigstar;</span>
+                    <span style="font-size:100%;">&bigstar;</span>
+                    <span style="font-size:100%;">&bigstar;</span>
+                    </div>
+              
+                    <div *ngIf="item.note==3"> 
+                      <span style="font-size:100%;color:#ffc409">&bigstar;</span>
+                      <span style="font-size:100%;color:#ffc409">&bigstar;</span>
+                      <span style="font-size:100%;color:#ffc409">&bigstar;</span>
+                    <span style="font-size:100%;">&bigstar;</span>
+                    <span style="font-size:100%;">&bigstar;</span>
+                    </div>
+              
+                    <div *ngIf="item.note==4"> 
+                      <span style="font-size:100%;color:#ffc409">&bigstar;</span>
+                      <span style="font-size:100%;color:#ffc409">&bigstar;</span>
+                      <span style="font-size:100%;color:#ffc409">&bigstar;</span>
+                      <span style="font-size:100%;color:#ffc409;">&bigstar;</span>
+                    <span style="font-size:100%;">&bigstar;</span>
+                    </div>
+              
+                    <div *ngIf="item.note==5"> 
+                      <span style="font-size:100%;color:#ffc409;">&bigstar;</span>
+                      <span style="font-size:100%;color:#ffc409;">&bigstar;</span>
+                      <span style="font-size:100%;color:#ffc409;">&bigstar;</span>
+                      <span style="font-size:100%;color:#ffc409;">&bigstar;</span>
+                      <span style="font-size:100%;color:#ffc409;">&bigstar;</span>
+                    </div>
+    
+                    {{item.firstname}} 
+                  </ion-label>
+                <ion-label>
+                {{item.comment}}  
+                </ion-label>
+              <ion-label>
+                <p>{{item.firstname}} </p> 
+              </ion-label>
+            </ion-item>
+    
+            <ion-button icon-left size="primary" expand="full"  (click)="openModalNote($event, item)"   tappable>
+              Ajouter un avis
+            </ion-button>
+          </ion-card>
+         
+       
+
+
+        
+          <ion-card mode="ios"  *ngSwitchCase="'contact'">
+            <ion-card-content class="ion-no-padding">
+              <ion-list class="ion-no-padding" lines="none">
+
+
+
+                <ion-list *ngFor="let item of posts" >
+        
+                    <ion-item target="_blank" href="{{item.url_facebook}}">
+                        <ion-icon name="logo-facebook" slot="start"></ion-icon>
+                        {{item.url_facebook}}
+                    </ion-item>
+
+
+
+                    <ion-item target="_blank" href="{{item.url_instagram}}">
+                      <ion-icon name="logo-instagram"></ion-icon>
+                      {{item.url_instagram}}
+                    </ion-item>
+
+
+
+                    <ion-item target="_blank" href="{{item.url_tiktok}}">
+                      <ion-icon name="logo-tiktok"></ion-icon>
+                      {{item.url_tiktok}}
+                    </ion-item>
+
+
+                    <ion-item target="_blank" href=" {{item.url_website}}">
+                      <ion-icon name="tv-outline"></ion-icon>
+                      {{item.url_website}}
+                    </ion-item>
+
+                    <ion-item target="_blank" href="{{item.url_whatsapp}}">
+                      <ion-icon name="logo-whatsapp"></ion-icon>
+                      {{item.url_whatsapp}}
+                    </ion-item>
+
+                </ion-list>
+
+
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+
+        </div>
+</ion-list>
+
+
+</ion-col>
+</ion-row>
+</ion-content>
+
+
+

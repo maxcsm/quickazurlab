@@ -1,0 +1,94 @@
+
+  <ion-header >
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        1.1.1
+      </ion-buttons>
+      <ion-buttons slot="end">
+        
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+
+
+     <ion-content style="background-color: #0d748d;">
+      <ion-grid >
+       
+         <ion-row class="padding">
+         <ion-col sizeLg="12" sizeMd="12" sizeXs="12" style="border: 2px;border-width: 2px;"  class="bloc"  style="background-color: #e0e2e2;">
+            <!-- Logo -->
+      
+     
+        <div  style="padding-top: 1%;padding-bottom: 5%;">
+          <ion-img
+          src="./assets/logo-dark.png" height="100px"
+        ></ion-img>
+        </div>
+   
+
+         <!-- Login form -->
+         <form [formGroup]="onLoginForm" class="list-form">
+           <ion-item >
+             <ion-label position="floating">
+              <ion-icon name="mail-outline" item-start></ion-icon>
+               Email
+             </ion-label>
+             <ion-input  type="email"  [(ngModel)]="email" formControlName="email"></ion-input>
+           </ion-item>
+     
+     
+     
+           <p ion-text class="text08" *ngIf="onLoginForm.get('email')">
+             <ion-text color="light">
+               * Email requis.
+             </ion-text>
+           </p>
+     
+           <ion-item no-lines>
+             <ion-label position="floating">
+            <ion-icon name="lock-closed-outline"  item-start></ion-icon>
+             Mot de passe 
+             </ion-label>
+             <ion-input  type="password"  [(ngModel)]="password" formControlName="password"></ion-input>
+           </ion-item>
+
+
+
+
+           <p ion-text color="warning" class="text08" *ngIf="onLoginForm.get('password')">
+             <ion-text color="light">
+                 * Mot de passe requis.
+             </ion-text>
+             </p>
+         </form>
+     
+         <div class="ion-margin-top ion-text-right" style="padding-top: 1%;padding-bottom: 5%;">
+         <a  [routerLink]="['/forgotpassword']">
+           <ion-text >
+             <strong> Mot de passe oublié </strong>
+           </ion-text>
+         </a>
+       </div>
+    
+         <div style="padding-bottom: 20px;">
+           <ion-button type="submit" color="primary" expand="block"  (click)="goLogin()" [disabled]="!onLoginForm.valid"  style="text-transform:none!important;"> Connexion </ion-button>
+         </div>
+
+         <ion-button type="submit" color="primary" expand="block" fill="outline" [routerLink]="['/register-perso']" style="text-transform:none!important;"> Inscription Particulier </ion-button>
+         <ion-button type="submit" color="primary" expand="block" [routerLink]="['/register-pro2']" style="text-transform:none!important;"> Inscription Professionnelle  </ion-button>
+         </ion-col>
+    
+     
+       </ion-row>
+
+
+
+    
+     </ion-grid>
+        
+     
+ 
+     
+     </ion-content>
+     

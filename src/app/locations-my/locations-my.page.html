@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+
+    
+    <ion-title >
+    Mes piscines
+     </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content>
+    <ion-list>
+
+
+      <ion-button type="submit" color="secondary" expand="block" (click)="addNewPool()"  style="text-transform:none!important;"> <ion-icon name="add-circle-outline"></ion-icon>   Ajouter   </ion-button>
+
+
+
+      <ion-item button *ngFor="let item of posts">
+        <ion-avatar slot="start"  (click)="edit($event, item)"  >
+          <ion-icon name="tablet-landscape-outline"></ion-icon>
+        </ion-avatar>
+
+
+        <ion-label  (click)="edit($event, item)">
+          <ion-text>
+            
+            <h2>{{item.title}} </h2>
+            <ion-badge > {{item.city}}</ion-badge>
+          </ion-text>
+        </ion-label>
+        <ion-button ion-button outline item-end small color="secondary" (click)="delete($event, item)" ><ion-icon name="trash-outline"></ion-icon></ion-button>
+      </ion-item>
+    </ion-list>
+
+    <ion-list class="ion-margin-top ion-text-center" *ngIf="posts==0"  >
+      <img src="assets/empty.png" width="200px">
+      <h1>Oups !</h1>
+      <p>Aucune piscine trouvée</p>
+    
+    </ion-list>
+   
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Chargement..."> </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+
+
+
+
+
+
+
