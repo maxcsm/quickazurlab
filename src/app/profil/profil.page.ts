@@ -1,5 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, Component, OnInit, ViewChild } from '@angular/core';
-import { NavController, LoadingController, PopoverController, AlertController, ToastController, IonModal } from '@ionic/angular';
+import { NavController, LoadingController, PopoverController, AlertController, ToastController, IonModal, MenuController } from '@ionic/angular';
 import { RedditService } from 'src/providers/reddit-service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -28,9 +28,11 @@ export class ProfilPage  {
       public redditService:RedditService, 
       private router: Router,  
       public toastCtrl: ToastController,
+      public menu: MenuController,
       private loadingCtrl: LoadingController, 
       private localStore: LocalService,
-      private authService: AuthenticationService
+      private authService: AuthenticationService,
+
 ) {
        
     }
@@ -100,5 +102,48 @@ export class ProfilPage  {
     this.authService.logout()
     }, 1000);
 })}
+
+
+
+
+
+async logout() {
+
+
+  const alert = await this.alertController.create({
+    header: 'Déconnexion',
+    subHeader: '',
+    message: 'Voulez-vous vraiment déconnecter ?',
+    buttons: [{
+      text: 'Ok',
+      cssClass: 'primary',
+      handler: (blah) => {
+        console.log('Confirm Ok: blah');
+   
+        this.authService.logout();
+         setTimeout(() => { 
+     
+         
+        this.menu.enable(false);
+         this.router.navigateByUrl('/login');
+       }, 1000); 
+      }
+    },
+    {
+      text: 'Annuler',
+      cssClass: 'secondary',
+      handler: (blah) => {
+        console.log('Confirm Cancel: blah');
+      }
+    }
+  ]
+  });
+
+  await alert.present();
+}
+
+
+
+
 }
 

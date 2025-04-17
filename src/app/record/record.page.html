@@ -1,0 +1,236 @@
+<ion-header [translucent]="false"  class="hidden-xs hidden-lg" >
+  <ion-toolbar mode="ios" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Retour"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Analyses</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+
+
+
+
+
+ 
+
+    <ion-col align-self-center size-md="12" size-lg="12" size-xs="12"> 
+
+
+      <form [formGroup]="onRecordForm" (ngSubmit)="submitForm()" novalidate class="list-form" >
+
+      <ion-row >
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+          <ion-item class="roundedInput-full">
+          TAC alcalinité (ppm)
+          </ion-item>
+       </ion-col>
+       <ion-col sizeLg="6" sizeMd="6" sizeXs="6" > 
+          <ion-item class="roundedInput">
+          <ion-input [(ngModel)]="tac"  min="0" max="100" formControlName="tac" type="number" class="roundedInput"></ion-input>
+          </ion-item>
+       </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+             <ion-range class="tac" min="0" max="100" step="1" value="130"  [(ngModel)]="tac"  formControlName="tac" (ionChange)="onRangeChangeTac($event)"></ion-range>
+        </ion-col>
+      </ion-row>
+
+
+
+      <ion-row >
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+          <ion-item class="roundedInput-full">
+          pH
+          </ion-item>
+       </ion-col>
+       <ion-col sizeLg="6" sizeMd="6" sizeXs="6" > 
+          <ion-item class="roundedInput">
+          <ion-input [(ngModel)]="ph"  min="0" max="100" formControlName="ph" type="number" class="roundedInput"></ion-input>
+          </ion-item>
+       </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-range class="ph" min="0" max="14" step="0.1" value="7"  [(ngModel)]="ph"  formControlName="ph" (ionChange)="onRangeChangePh($event)"></ion-range>
+        </ion-col>
+      </ion-row>
+
+
+
+
+
+      <ion-row >
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+          <ion-item class="roundedInput-full">
+            TH dureté  (ppm)
+          </ion-item>
+       </ion-col>
+       <ion-col sizeLg="6" sizeMd="6" sizeXs="6" > 
+          <ion-item class="roundedInput">
+          <ion-input [(ngModel)]="th"  min="0" max="100" formControlName="th" type="number" class="roundedInput"></ion-input>
+          </ion-item>
+       </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-range class="th" min="0" max="100" step="1" value="100" (ionChange)="onRangeChangeTh($event)"></ion-range>
+        </ion-col>
+      </ion-row>
+
+      <ion-row >
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+          <ion-item class="roundedInput-full">
+            Chlore Libre (ppm)
+          </ion-item>
+       </ion-col>
+       <ion-col sizeLg="6" sizeMd="6" sizeXs="6" > 
+          <ion-item class="roundedInput">
+          <ion-input [(ngModel)]="clib"  min="0" max="100" formControlName="clib" type="number" class="roundedInput"></ion-input>
+          </ion-item>
+       </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-range class="clib" min="0" max="100" step="1" value="50" (ionChange)="onRangeChangeClib($event)"></ion-range>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row >
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+          <ion-item class="roundedInput-full">
+            Chlore Total (ppm)
+          </ion-item>
+       </ion-col>
+       <ion-col sizeLg="6" sizeMd="6" sizeXs="6" > 
+          <ion-item class="roundedInput">
+          <ion-input [(ngModel)]="ct"  min="0" max="100" formControlName="ct" type="number" class="roundedInput"></ion-input>
+          </ion-item>
+       </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-range class="ct" min="0" max="100" step="1" value="50" (ionChange)="onRangeChangeCt($event)"></ion-range>
+        </ion-col>
+      </ion-row>
+
+
+
+
+      <ion-row >
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+          <ion-item class="roundedInput-full">
+            Brome (ppm)
+          </ion-item>
+       </ion-col>
+       <ion-col sizeLg="6" sizeMd="6" sizeXs="6" > 
+          <ion-item class="roundedInput">
+          <ion-input [(ngModel)]="clBr"  min="0" max="100" formControlName="clBr" type="number" class="roundedInput"></ion-input>
+          </ion-item>
+       </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-range class="clBr" min="0" max="100" step="1" value="50" (ionChange)="onRangeChangeclBr($event)"></ion-range>
+        </ion-col>
+      </ion-row>
+
+
+
+      <ion-row >
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+          <ion-item class="roundedInput-full">
+            CYA Acide cyanurique (ppm)
+          </ion-item>
+       </ion-col>
+       <ion-col sizeLg="6" sizeMd="6" sizeXs="6" > 
+          <ion-item class="roundedInput">
+          <ion-input [(ngModel)]="cya"  min="0" max="100" formControlName="cya" type="number" class="roundedInput"></ion-input>
+          </ion-item>
+       </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-range class="cya" min="0" max="100" step="1" value="50" (ionChange)="onRangeChangeCya($event)"></ion-range>
+        </ion-col>
+      </ion-row>
+
+
+
+
+
+      <ion-row >
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+          <ion-item class="roundedInput-full">
+            Phosphate (ppb)
+          </ion-item>
+       </ion-col>
+       <ion-col sizeLg="6" sizeMd="6" sizeXs="6" > 
+          <ion-item class="roundedInput">
+          <ion-input [(ngModel)]="pht"  min="0" max="100" formControlName="pht" type="number" class="roundedInput"></ion-input>
+          </ion-item>
+       </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-range class="pht" min="0" max="100" step="1" value="50" (ionChange)="onRangeChangePht($event)"></ion-range>
+        </ion-col>
+      </ion-row>
+
+
+
+
+
+
+      <ion-row >
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+          <ion-item class="roundedInput-full">
+            Cuivre (ppm) 0 - 0.8
+          </ion-item>
+       </ion-col>
+       <ion-col sizeLg="6" sizeMd="6" sizeXs="6" > 
+          <ion-item class="roundedInput">
+          <ion-input [(ngModel)]="cuiv"  min="0" max="1" formControlName="cuiv" type="number" class="roundedInput"></ion-input>
+          </ion-item>
+       </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-range class="cuiv" min="0" max="0.8" step="0.1" value="0.5" (ionChange)="onRangeChangeCuiv($event)"></ion-range>
+        </ion-col>
+      </ion-row>
+
+
+
+      <ion-row >
+        <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+          <ion-item class="roundedInput-full">
+            Fer  (ppm) 0 - 0.3
+          </ion-item>
+       </ion-col>
+       <ion-col sizeLg="6" sizeMd="6" sizeXs="6" > 
+          <ion-item class="roundedInput">
+          <ion-input [(ngModel)]="fer"  min="0" max="1" formControlName="fer" type="number" class="roundedInput"></ion-input>
+          </ion-item>
+       </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" > 
+          <ion-range class="fer" min="0" max="0.3" step="0.1" value="0.1"(ionChange)="onRangeChangeFer($event)"></ion-range>
+        </ion-col>
+      </ion-row>
+
+      <ion-button type="submit" color="secondary" expand="block" [disabled]="!onRecordForm.valid">  Enregistrer </ion-button>
+    </form>
+
+   
+    
+   
+    </ion-col>
+
+
+</ion-content>

@@ -57,9 +57,7 @@ export class LocationsMyPage implements OnInit {
   ngOnInit() {
     this.UrlImage=this.redditService.getUrlImage();
     this.iduser = this.localStore.getItem('iduser');
-
   }
-
 
 
   ionViewWillEnter(){
@@ -162,11 +160,12 @@ addNewPool(){
 
 }
 
-
-
 async edit(event: any, item: any) {
 this.router.navigateByUrl('/location/' + item.id);
 }
+
+
+
 async delete(event: any, item: { id: number; }) {
   this.id=item.id;
   const alert = await this.alertController.create({

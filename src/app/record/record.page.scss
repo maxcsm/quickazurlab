@@ -1,0 +1,64 @@
+ion-range {
+    --knob-background: #878787;
+    --knob-width: 20px;
+    --bar-height: 1px;
+    -webkit-margin-top-collapse: 20px;
+  }
+
+
+  .ph {
+    background: linear-gradient(to right, #f8b30e, #f2960f, #ee7d15, #ee6f28, #e83f2c, #e61056);
+  }
+  .th {
+    background: linear-gradient(to right, #327bb0, #5778ae, #606ba9, #6f60a1, #884f9c);
+  }
+  .tac {
+    background: linear-gradient(to right,#fac400, #e2ba00, #b2a813, #8d9734, #528753, #267861);
+  }
+  .clBr {
+    background: linear-gradient(to right,#fffde4, #fef4e8, #fdeef3, #f9d5e3, #e6afcf, #d687b7);
+  }
+
+  
+  .ct {
+    background: linear-gradient(to right, #ffef98, #f8f499, #e4e971, #c3dc81, #8bc781);
+  }
+  .cya {
+    background: linear-gradient(to right,  #e7a80f, #e27e4c,#db6468, #d34f7e, #ce2c7f);
+  }
+  .pht {
+    background: linear-gradient(to right, #e3e3e3, #d1d7d3, #bccacc, #84a5b0, #5086a7);
+  }
+
+  
+  
+  .cuiv {
+    background: linear-gradient(to right, #fdeef3, #e6afcf, #eabac8, #d687b7, #ab1d79, #6d412a);
+  }
+  .fer {
+    background: linear-gradient(to right, #ffeeee, #f9d5e3, #f0d1d4, #eeb1b1, #c96e86);
+  }
+  .clib {
+    background: linear-gradient(to right, #dedad9, #e5cbce, #f0d1d4, #eca5b5, #ec7ea3, #e25987);
+  }
+
+
+
+  ion-row {
+    ion-col {
+      ion-row {
+        ion-card{
+       .roundedInput  {
+        
+         --border-color: gray;
+         --border-radius: 5px;
+         --border-width: 2px;
+         --box-shadow: 2px gray;
+         --highlight-height: 0;
+         --background: #f8f9fa;
+         padding-right: 10px;
+        }
+      }
+     }
+   }
+ }

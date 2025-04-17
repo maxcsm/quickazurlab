@@ -17,27 +17,13 @@ const routes: Routes = [
         loadChildren: () => import('../login/login.module').then( m => m.LoginPageModule),
       },
       {
-        path: 'chat',
-        loadChildren: () => import('../messages/messages.module').then(m => m.MessagesPageModule),
-        canActivate: [AuthGuard]
-      },
-      {
         path: 'profil',
         loadChildren: () => import('../profil/profil.module').then(m => m.ProfilPageModule),
         canActivate: [AuthGuard]
       },
       {
-        path: 'favoris',
-        loadChildren: () => import('../favoris/favoris.module').then(m => m.FavorisPageModule),
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'locations',
-        loadChildren: () => import('../locations/locations.module').then(m => m.LocationsPageModule)
-      },
-      {
-        path: 'users',
-        loadChildren: () => import('../users/users.module').then(m => m.UsersPageModule)
+        path: 'posts',
+        loadChildren: () => import('../posts/posts.module').then(m => m.PostsPageModule)
       },
       {
         path: 'location-new',
@@ -48,10 +34,6 @@ const routes: Routes = [
         path: 'locations-my',
         loadChildren: () => import('../locations-my/locations-my.module').then(m => m.LocationsMyPageModule),
         canActivate: [AuthGuard]
-      },
-      {
-        path: 'map',
-        loadChildren: () => import('../map/map.module').then(m => m.MapPageModule)
       },
       {
         path: '',

@@ -5,7 +5,7 @@
         <ion-list id="inbox-list" style="padding-top: 100px;">
         
           <img  src="../assets/logo-dark.png" style="width: 200px;" >
-          Particulier
+ 
           <ion-menu-toggle auto-hide="false" id="menu1" *ngFor="let p of appClient; let i = index" >
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" color="primary">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
@@ -25,31 +25,6 @@
       </ion-content>
     </ion-menu>
 
-    <ion-menu type="overlay" menuId="menu2" contentId="main-content" >
-      <ion-content >
-  
-        <ion-list id="inbox-list" style="padding-top: 100px;">
-         
-          <img  src="../assets/logo-dark.png" style="width: 200px;" >
-          Professionnel
-          <ion-menu-toggle auto-hide="false" id="menu2" *ngFor="let p of appTech; let i = index" >
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" color="primary">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-
-        <ion-list id="labels-list">
-            <ion-item lines="full"  (click)="logout()" color="primary">
-              <ion-icon slot="start" name="log-out"></ion-icon>
-              <ion-label>
-               Déconnexion
-              </ion-label>
-            </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
 
 
 

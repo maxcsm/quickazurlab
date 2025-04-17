@@ -64,7 +64,7 @@
   --ion-color-dark-tint: #383a3e;
 
   /** medium **/
-  --ion-color-medium: #92949c;
+  --ion-color-medium: #c3c3c4;
   --ion-color-medium-rgb: 146, 148, 156;
   --ion-color-medium-contrast: #ffffff;
   --ion-color-medium-contrast-rgb: 255, 255, 255;
@@ -74,7 +74,7 @@
   /** light **/
   --ion-color-light: #f4f5f8;
   --ion-color-light-rgb: 244, 245, 248;
-  --ion-color-light-contrast: #636363;
+  --ion-color-light-contrast: #c2bebe;
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
@@ -138,11 +138,11 @@
     --ion-color-dark-shade: #d7d8da;
     --ion-color-dark-tint: #f5f6f9;
 
-    --ion-color-medium: #989aa2;
+    --ion-color-medium: #fefefe;
     --ion-color-medium-rgb: 152,154,162;
     --ion-color-medium-contrast: #000000;
     --ion-color-medium-contrast-rgb: 0,0,0;
-    --ion-color-medium-shade: #86888f;
+    --ion-color-medium-shade: #fbfbfb;
     --ion-color-medium-tint: #a2a4ab;
 
     --ion-color-light: #969696;
@@ -275,12 +275,25 @@ ion-searchbar{
   
 
     .roundedInput  {
-      --border-color: gray;
+      --border-color: #0d748d;
       --border-radius: 5px;
-      --border-width: 2px;
+      --border-width: 3px;
       --box-shadow: 2px gray;
       --highlight-height: 0;
       --background: #f8f9fa;
+     
+     }
+
+
+     .roundedInput-full  {
+      --border-color: #0d748d;
+      --border-radius: 5px;
+      --border-width: 3px;
+      --box-shadow: 2px gray;
+      --highlight-height: 0;
+      --color: #f8f9fa;
+      --background: #0d748d;
+
      
      }
   

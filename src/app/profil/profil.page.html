@@ -30,34 +30,34 @@
       <ion-list  style="margin-top: 20px;" >
 
 
-      <ion-item *ngIf="role==2" >
+      <ion-item *ngIf="role==2" style="display:none">
         <b>   Mon entreprise</b>
       </ion-item>
    
-      <ion-item [routerLink]="['/my-company']" *ngIf="role==2"> 
+      <ion-item [routerLink]="['/my-company']" *ngIf="role==2" style="display:none"> 
         <ion-icon color="secondary" slot="start" name="home" size="large"></ion-icon>
         A propos
       </ion-item>
 
 
-      <ion-item [routerLink]="['/my-pictures']" *ngIf="role==2">
+      <ion-item [routerLink]="['/my-pictures']" *ngIf="role==2" style="display:none">
         <ion-icon color="secondary" slot="start" name="images" size="large"></ion-icon>
        Mes photos
       </ion-item>
 
 
-      <ion-item [routerLink]="['/my-social']" *ngIf="role==2">
+      <ion-item [routerLink]="['/my-social']" *ngIf="role==2" style="display:none">
         <ion-icon color="secondary" slot="start" name="share-social" size="large"></ion-icon>
        Mes reseaux
       </ion-item>
 
 
-      <ion-item [routerLink]="['/my-hours']" *ngIf="role==2">
+      <ion-item [routerLink]="['/my-hours']" *ngIf="role==2" style="display:none">
         <ion-icon color="secondary" slot="start" name="time" size="large"></ion-icon>
         Mes horaires
        </ion-item>
 
-      <ion-item [routerLink]="['/my-files']" *ngIf="role==2">
+      <ion-item [routerLink]="['/my-files']" *ngIf="role==2" style="display:none">
         <ion-icon color="secondary" slot="start" name="file-tray-full" size="large"></ion-icon>
         Mes fichiers
        </ion-item>
@@ -81,17 +81,17 @@
     </ion-list>
 
     <div style="padding-top: 20px;">
-      <ion-button icon-left color="primary" expand="block"   (click)="delete()"  tappable>
+      <ion-button icon-left color="primary" expand="block"   (click)="delete()"   style="text-transform:none!important;">
       <b> Supprimer mon compte </b>
       </ion-button>
       </div>
 
+      <div style="padding-top: 20px;">
+        <ion-button icon-left color="light" expand="block"   (click)="logout()"   style="text-transform:none!important;">
+        <b> Déconnexion </b>
+        </ion-button>
+        </div>
 
-  <ion-list>
-    <ion-button (click)="updatePro()" color="secondary" expand="block" 
-     style="text-transform:none!important;"> Devenir Professionnel 
-    </ion-button>
-  </ion-list>
 
 
 

@@ -1,7 +1,7 @@
 <ion-header [translucent]="false"  class="hidden-xs hidden-lg" >
   <ion-toolbar mode="ios" color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text="Retour"></ion-back-button>
     </ion-buttons>
     <ion-title>{{title}}</ion-title>
   </ion-toolbar>
@@ -16,54 +16,205 @@
 
 
   <ion-row justify-content-center>
- 
-
     <ion-col align-self-center size-md="12" size-lg="12" size-xs="12"> 
-
-
-
-
-      <ion-row *ngFor="let item of posts">
-          <ion-card style="background-color: white;color:black; width: 100%;"  >
-            <ion-card-header style="background-color: white;color:black;">
-          
+          <ion-card style="background-color: white;color:black;" *ngFor="let item of posts" >
               <ion-card-title style="background-color: white;color:black;">{{item.title}}</ion-card-title>
-              {{item.adress}}  {{item.cp}}  <br> {{item.city}}
-            </ion-card-header>
+              {{item.address}}  {{item.cp}} <br>
+               {{item.city}}<br>
+               <b> {{item.volume}}  m3 </b><br>
+
+               Forme :  {{item.selectedForm }} <br>
+               Type de fond :  {{item.selectedType }} <br>
+               Type de filtre :   {{item.selectedTypeFiltre }}  <br>
+               Type de revêtement :   {{item.selectedTypeRevetement }} <br>
+               Type de désinfection :  {{item.selectedTypeDesinfection }}<br>
           </ion-card>
+
+
+      <ion-button type="submit" color="primary" expand="block"  (click)="goObservations()"  style="text-transform:none!important;"> <ion-icon name="add-circle-outline"></ion-icon> Observations  </ion-button>   
+
+      <ion-button type="submit" color="primary" expand="block"  (click)="goSel()"  style="text-transform:none!important;"> <ion-icon name="add-circle-outline"></ion-icon>  Calculateur de sel </ion-button>
+
+      <ion-button type="submit" color="primary" expand="block"  (click)="NewRecord()"  style="text-transform:none!important;"> <ion-icon name="add-circle-outline"></ion-icon>  Analyses  </ion-button>
       
-
-
-          <ion-card style="background-color: white;color:black; width: 100%;"  >
-            <ion-card-header style="background-color: white;color:black;">
-          
-              Volume :  {{item.volume}} m3 <br>
-              Forme :  {{item.selectedForm }} <br>
-              Type de fond :  {{item.selectedType }} <br>
-              Type de filtre :   {{item.selectedTypeFiltre }}  <br>
-              Type de revêtement :   {{item. selectedTypeRevetement }} <br>
-              Type de désinfection :  {{item.selectedTypeDesinfection }}<br>
-            </ion-card-header>
-          </ion-card>
+      <ion-button type="submit" color="primary" expand="block"   (click)="goTaylor()" style="text-transform:none!important;"> <ion-icon name="add-circle-outline"></ion-icon>  Balance de Taylor  </ion-button>
       
-      
-      </ion-row>
-
-      <ion-button   color="primary" expand="block" color="warning" class="ion-text-wrap"  style="text-transform:none!important;" > Ajouter des donnnées </ion-button>
-
-
-      <ion-row *ngFor="let item of posts">
-
-        <ion-card style="background-color: white;color:black; width: 100%;"  >
-          <ion-card-header style="background-color: white;color:black;">
-            Mes derniers rélevés : <br>
-          </ion-card-header>
-        </ion-card>
-    </ion-row>
-
     
-   
-    </ion-col>
+  </ion-col>
+
+
+
+
+<ion-col align-self-center size-md="12" size-lg="12" size-xs="12" *ngIf="total>0" > 
+
+
+
+
+    <ion-accordion-group>
+
+      <ion-accordion value="obs" class="accordeon">
+        <ion-item slot="header" color="medium">
+          <ion-icon name="happy-outline" color="success"  *ngIf="observ=='Piscine limpide'"   ></ion-icon>
+          <ion-icon name="sad-outline" color="danger" *ngIf="observ!=='Piscine limpide'"   ></ion-icon>
+          <ion-label>Observations {{observ}}</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">  {{getRecoObserv}}</div>
+      </ion-accordion>
+
+    <ion-accordion value="tac" class="accordeon">
+      <ion-item slot="header" color="medium">
+        <ion-icon name="happy-outline" color="success"  *ngIf="tac >= 80 && tac <=100"   ></ion-icon>
+        <ion-icon name="sad-outline" color="danger"  *ngIf="tac<80" ></ion-icon>
+          <ion-icon name="sad-outline" color="danger"  *ngIf="tac>100" ></ion-icon>
+        <ion-label>TAC  {{tac}} ppm </ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">  {{getRecoTac}}</div>
+    </ion-accordion>
+
+
+    <ion-accordion value="ph">
+      <ion-item slot="header" color="medium">
+        <ion-icon name="happy-outline" color="success"  *ngIf="ph >=7 || ph >=7.4"   ></ion-icon>
+        <ion-icon name="sad-outline" color="danger"  *ngIf="ph <7" ></ion-icon>
+          <ion-icon name="sad-outline" color="danger"  *ngIf="ph>7.4" ></ion-icon>
+        <ion-label>pH  {{ph}}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">  {{getRecoPh}}</div>
+    </ion-accordion>
+
+
+    <ion-accordion value="th">
+      <ion-item slot="header" color="medium">
+        <ion-icon name="happy-outline" color="danger"  *ngIf="cya >= 0 && cya < 25"   ></ion-icon>
+        <ion-icon name="sad-outline" color="success"  *ngIf="cya >= 25 && cya <= 50" ></ion-icon>
+        <ion-icon name="sad-outline" color="danger"  *ngIf="cya > 50 && cya <= 75" ></ion-icon>
+        <ion-icon name="sad-outline" color="danger"  *ngIf="cya > 75 && cya <= 100" ></ion-icon>
+        <ion-label>TH  {{th_current}} ppm</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">  {{getRecoTh}}</div>
+    </ion-accordion>
+
+
+
+    <ion-accordion value="ct">
+      <ion-item slot="header" color="medium">
+        <ion-icon name="happy-outline" color="danger"  *ngIf="imageCT"   ></ion-icon>
+        <ion-icon name="sad-outline" color="success"  *ngIf="!imageCT" ></ion-icon>
+        <ion-label>Chlore total {{ct}} ppm</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">  {{getRecoChlorine}}</div>
+    </ion-accordion>
+
+
+
+    <ion-accordion value="clibre">
+      <ion-item slot="header" color="medium">
+        <ion-icon name="sad-outline" color="danger"  *ngIf="clBr< 1"   ></ion-icon>
+        <ion-icon name="happy-outline"color="success"  *ngIf="clBr >= 1 && clBr <= 3" ></ion-icon>
+        <ion-icon name="sad-outline" color="danger"  *ngIf="clBr > 3" ></ion-icon>
+        <ion-label>Chlore libre {{clib}} ppm</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">  {{getRecoChlore}}</div>
+    </ion-accordion>
+
+    <ion-accordion value="cya">
+      <ion-item slot="header" color="medium">
+        <ion-icon name="sad-outline" color="danger"  *ngIf="cya >= 0 && cya < 25"   ></ion-icon>
+        <ion-icon name="happy-outline"  color="success"  *ngIf="cya >= 25 && cya <= 50" ></ion-icon>
+        <ion-icon name="sad-outline" color="danger"  *ngIf="cya > 50 && cya <= 75" ></ion-icon>
+        <ion-icon name="sad-outline" color="danger"  *ngIf="cya > 75 && cya <= 100" ></ion-icon>
+        <ion-label>CYA  {{cya}} ppm</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">  {{getRecoCya}}</div>
+    </ion-accordion>
+
+
+
+
+
+    <ion-accordion value="pht">
+      <ion-item slot="header" color="medium">
+        <ion-icon name="happy-outline"  color="success"   *ngIf="pht<=100"  ></ion-icon>
+        <ion-icon name="sad-outline" color="danger"  *ngIf="pht>100"  ></ion-icon>
+      
+        <ion-label>Phosphate {{pht}} ppb </ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">  {{getRecoPht}}</div>
+    </ion-accordion>
+
+
+
+    <ion-accordion value="cuiv">
+      <ion-item slot="header" color="medium">
+        <ion-icon name="happy-outline"  color="success"   *ngIf="cuiv<=3"  ></ion-icon>
+        <ion-icon name="sad-outline" color="danger"  *ngIf="cuiv>3"  ></ion-icon>
+        <ion-label>Cuivre  {{cuiv}} ppm </ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">  {{getRecoCuiv}}</div>
+    </ion-accordion>
+
+
+
+    <ion-accordion value="fer">
+      <ion-item slot="header" color="medium">
+        <ion-icon name="happy-outline"  color="success"   *ngIf="fer<=0.2"  ></ion-icon>
+        <ion-icon name="sad-outline" color="danger"  *ngIf="fer>0.2"  ></ion-icon>
+        <ion-label> Fer {{fer}} ppm </ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">  {{getRecoFer}}</div>
+    </ion-accordion>
+
+
+
+
+
+
+  </ion-accordion-group>
+</ion-col>
+
+
+
+<ion-col align-self-center size-md="12" size-lg="12" size-xs="12" *ngIf="total==0" > 
+
+
+  <ion-card style="background-color: white;color:black;"  >
+    <ion-card-header style="background-color: white;color:black;">
+
+       Vous devez ajouter au moins relevé 
+
+    </ion-card-header>
+  </ion-card>
+</ion-col>
+
+
+
+
+<ion-col align-self-center size-md="12" size-lg="12" size-xs="12" *ngIf="total>0" > 
+<ion-button type="submit" color="secondary" expand="block"  (click)="savePdf()"  style="text-transform:none!important;"> 
+  <ion-icon name="send-outline"></ion-icon>  Envoyer le rapport  
+ </ion-button>
+</ion-col>
+
+
+
+
+<ion-col align-self-center size-md="12" size-lg="12" size-xs="12" > 
+
+  <ion-accordion-group>
+
+    <ion-accordion value="secu" class="accordeon">
+      <ion-item slot="header" color="primary">
+        <ion-label>Consignes de sécurité </ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">  Utilisez les produits chimiques avec précaution. Avant toute utilisation, suivre les consignes
+        du fabricant. Ne pas mélanger ensemble les différents produis chimiques. Dissoudre par
+        dose de 1 kg les produits solides dans un seau dédié à chaque produit (sauf indication
+        contraire). Port de gant et de lunettes fortement recommandé.
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-col>
+
 
   </ion-row>
 </ion-content>

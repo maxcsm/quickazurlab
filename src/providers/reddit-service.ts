@@ -9,8 +9,9 @@ import { AlertController, ToastController } from '@ionic/angular';
 @Injectable()
 export class RedditService {
 
+  // BONNE CHANCE AVEC ELLE !!!
+
   URLbase = "https://api3.alpes-solutech.fr/api/"
-  
   URLImage = "https://api3.alpes-solutech.fr";
 
 
@@ -30,8 +31,6 @@ export class RedditService {
   httpOptions = {
     headers: new HttpHeaders({
      'Content-Type': 'application/json',
-   // 'Access-Control-Allow-Headers': 'Origin, Content-Type, X-XSRF-TOKEN',
-   // 'Access-Control-Allow-Origin': 'http://localhost:8080'
   })}
 
 
@@ -82,13 +81,6 @@ export class RedditService {
   }
   
 
-  updateinvoice(table: string,id: string, data: any): Observable<any> {
-    return this.http
-      .post<any>(this.URLbase+table+'/'+id,data,this.httpOptions)
-      .pipe(retry(2),catchError(this.handleError))
-  }
-
-
   delete(table: string,id: string): Observable<any> {
     return this.http
       .delete<any>(this.URLbase+table+'/'+id,this.httpOptions)
@@ -110,16 +102,6 @@ export class RedditService {
   getDataBypageByUser(id:number, page: string | number, table: string, per_page: string | number, order_id: string, order_by: string, category: string | number, status: string | number, filter: string): Observable<any> {
     return this.http
       .get<any>(this.URLbase + table +'/'+id+'?page=' + page + '&per_page=' + per_page + '&order_id=' + order_id + '&order_by=' + order_by + '&category=' + category+'&status=' + status+  '&filter=' + filter)
-      .pipe(retry(2), catchError(this.handleError))
-  }
-  getDataBypageCalendar(page: string, table: string, per_page: string | number,startdate: string,enddate: string,priority: string | boolean, filter: string): Observable<any> {
-    return this.http
-      .get<any>(this.URLbase + table + '?page=' + page + '&size=' + per_page +'&startDate=' +startdate+'&endDate=' +enddate+'&active='+priority+'&filter='+filter)
-      .pipe(retry(2), catchError(this.handleError))
-  }
-  getDataBypageByMessage(thread_id:number, page: string | number, table: string, per_page: string | number, order_id: string, order_by: string, category: string | number, status: string | number, filter: string): Observable<any> {
-    return this.http
-      .get<any>(this.URLbase + table+ '?page=' + page + '&per_page=' + per_page + '&order_id=' + order_id + '&order_by=' + order_by + '&category=' + category+'&status=' + status+  '&filter=' + filter+ '&thread_id='+ thread_id)
       .pipe(retry(2), catchError(this.handleError))
   }
 
@@ -146,67 +128,14 @@ export class RedditService {
   }
 
 
-  uploadImage(table: string,data: FormData): Observable<any> {
-    return this.http
-      .post<any>(this.URLbase+table,data,this.httpOptions)
-      .pipe(retry(2),catchError(this.handleError))
-  }
-  
- 
-  public uploadFormData(formData: any) {
-    return this.http.post<any>('https://api.alpes-solutech.fr/api/upload', formData);
-  }
+
 
   getGeocode(text: string): Observable<any> {
     return this.http
-      .get<any>("https://api.geoapify.com/v1/geocode/search?text="+ text +"&apiKey=636cdf779a8c4b778f2cc84de97ced34",this.httpOptions)
+      .get<any>("https://api.geoapify.com/v1/geocode/search?text="+ text +"&apiKey=815009fa6d7e4b04bab7925c7762d85b",this.httpOptions)
       .pipe(retry(2),catchError(this.handleError))
   }
   
-
-
-
-  savenewMessage(data: any): Observable<any> {
-    return this.http
-      .post<any>(this.URLbase + 'savenewMessage.json', data, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError))
-  }
-
-  updatemessage(data: string): Observable<any> {
-    return this.http
-      .post<any>(this.URLbase + 'updatemessage', data, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError))
-  }
-
-  save_message_app(data: any): Observable<any> {
-    return this.http
-      .post<any>(this.URLbase + 'save_message_app.json', data, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError))
-  }
-  readMessage(data: any): Observable<any> {
-    return this.http
-      .post<any>(this.URLbase + 'readMessage.json', data, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError))
-  }
-  
-  getMessage(data: any): Observable<any> {
-    return this.http
-      .post<any>(this.URLbase + 'getMessage.json', data, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError))
-  }
-
-
-  setMessage(data: any): Observable<any> {
-    return this.http
-      .post<any>(this.URLbase + 'setMessage.json', data, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError))
-  }
-
-  deleteMessage(data: any): Observable<any> {
-    return this.http
-      .post<any>(this.URLbase + 'deleteMessageFirst.json', data, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError))
-  }
 
 
   getsearchAdressGeo( word:string ): Observable<any> {
@@ -214,8 +143,6 @@ export class RedditService {
       .get<any>(this.URLbase + 'searchadress?word='+word)
       .pipe(retry(2), catchError(this.handleError))
   }
-
-
 
 
   getUrlBase() {

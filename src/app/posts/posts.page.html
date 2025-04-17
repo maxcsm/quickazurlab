@@ -1,0 +1,126 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-title> Faq </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content>
+    <ion-list>
+
+
+      <ion-item color="primary" lines="none">
+        <b>  Généralités sur l'application</b>
+      </ion-item>
+
+
+    <ion-accordion-group *ngFor="let item of posts" >
+      <ion-accordion value="1" *ngIf="item.view==1">
+        <ion-item slot="header" color="medium">
+          <ion-label>  <h2><b> {{item.title}} </b></h2></ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <div [innerHTML]="item.content"></div>
+        </div>
+
+
+      </ion-accordion>
+    </ion-accordion-group>
+
+
+
+
+
+    <ion-item color="primary" lines="none">
+      <b>  Utilisation est entretien de la piscine </b>
+    </ion-item>
+
+
+
+    <ion-accordion-group *ngFor="let item of posts" >
+      <ion-accordion value="3" *ngIf="item.view==3">
+        <ion-item slot="header" color="medium">
+          <ion-label>  <h2><b> {{item.title}} </b></h2></ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <div [innerHTML]="item.content"></div>
+        </div>
+
+
+      </ion-accordion>
+    </ion-accordion-group>
+
+
+
+
+
+    <ion-item color="primary" lines="none">
+      <b>  Confidentialité et support </b>
+    </ion-item>
+
+
+
+    <ion-accordion-group *ngFor="let item of posts" >
+      <ion-accordion value="3" *ngIf="item.view==5">
+        <ion-item slot="header" color="medium">
+          <ion-label>  <h2><b> {{item.title}} </b></h2></ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <div [innerHTML]="item.content"></div>
+        </div>
+
+
+      </ion-accordion>
+    </ion-accordion-group>
+
+   
+  <ion-item color="primary" lines="none">
+    <b>  Ressources utiles pour l'entretien de votre priscine </b>
+  </ion-item>
+
+
+
+  <ion-accordion-group *ngFor="let item of posts" >
+    <ion-accordion value="3" *ngIf="item.view==6">
+      <ion-item slot="header" color="medium">
+        <ion-label>  <h2><b> {{item.title}} </b></h2></ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <div [innerHTML]="item.content"></div>
+      </div>
+
+
+    </ion-accordion>
+  </ion-accordion-group>
+
+
+
+     
+  <ion-item color="primary" lines="none">
+    <b>  Où puis-je consulter les Conditions Générales d'utilisation ? </b>
+  </ion-item>
+
+
+
+  <ion-accordion-group *ngFor="let item of posts" >
+    <ion-accordion value="3" *ngIf="item.view==7">
+      <ion-item slot="header" color="medium">
+        <ion-label>  <h2><b> {{item.title}} </b></h2></ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <div [innerHTML]="item.content"></div>
+      </div>
+
+
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-list>
+ 
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Chargement..."> </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+
+
+
+

@@ -23,7 +23,7 @@
 
       <ion-item button *ngFor="let item of posts">
         <ion-avatar slot="start"  (click)="edit($event, item)"  >
-          <ion-icon name="tablet-landscape-outline"></ion-icon>
+          <img src="assets/piscine-list.png" width="200px">
         </ion-avatar>
 
 
@@ -31,7 +31,10 @@
           <ion-text>
             
             <h2>{{item.title}} </h2>
+            {{item.volume}} m3 <br>
             <ion-badge > {{item.city}}</ion-badge>
+
+       
           </ion-text>
         </ion-label>
         <ion-button ion-button outline item-end small color="secondary" (click)="delete($event, item)" ><ion-icon name="trash-outline"></ion-icon></ion-button>

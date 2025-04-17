@@ -117,7 +117,9 @@ export class ContactPage implements OnInit {
 
 
    async closeModel() {
+    this.content=""; 
     const close: string = "Modal Removed";
+    this.router.navigateByUrl('/tabs/profil');
     await this.modalController.dismiss(close);
   }
 

@@ -1,0 +1,54 @@
+<ion-header [translucent]="false"  class="hidden-xs hidden-lg" >
+  <ion-toolbar mode="ios" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Retour"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Observations </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+  <ion-row justify-content-center>
+      <ion-col sizeLg="3" sizeMd="3" sizeXs="12" >
+      </ion-col>
+      <ion-col sizeLg="6" sizeMd="6" sizeXs="12" >
+  
+        <form [formGroup]="onRecordForm" (ngSubmit)="submitForm()" novalidate class="list-form" >
+             
+              <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+              <h4> Observations </h4>
+              <ion-label position="stacked"> Sélectionnez l'état de l'eau</ion-label>
+
+
+             
+                <ion-row>
+                  <ion-col size="6" *ngFor="let item of observations">
+                    <ion-button fill="clear" (click)="selectImage(item)" [ngClass]="{'selected': obser === item.value}" class="wrap-button">
+                      <ion-img [src]="item.image" class="option-img" ></ion-img> 
+                      {{item.value}}
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+           
+
+          
+              </ion-col>
+               <ion-row >
+                <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+                  <ion-label position="stacked"> Température de l'eau (°C)</ion-label>
+                   <ion-item class="roundedInput">
+                     <ion-label position="floating">Température </ion-label>
+                    <ion-input type="number" [(ngModel)]="temp" formControlName="temp" max="40"  min="0">  </ion-input>
+                  </ion-item>
+                </ion-col>
+               </ion-row>
+ 
+            <ion-button type="submit" color="secondary" expand="block" style="text-transform:none!important;" [disabled]="!onRecordForm.valid">  Enregistrer </ion-button>
+        </form>
+
+    </ion-col>
+    <ion-col sizeLg="3" sizeMd="3" sizeXs="12" >
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,4 +1,24 @@
 
+
+
+
+.title-center{
+     padding:35% 10% 2% 10%;
+     font-weight: bold;
+     position: absolute;
+     font-weight: 500;
+     font-size: 35px;
+}
+
+
+.title-center2{
+    padding:60% 10% 2% 10%;
+    font-weight: bold;
+    position: absolute;
+    font-weight: 500;
+    font-size: 35px;
+}
+
 b {
     font-weight: 500;
   }
@@ -190,7 +210,7 @@ justify-content: center;
 }
 
 #background-wrap {
-  background: #00b4ff;
+  background:  linear-gradient(#0d748d, #00b4ff);
     bottom: 0;
 	left: 0;
 	position: fixed;
@@ -203,7 +223,7 @@ justify-content: center;
 
 @-webkit-keyframes animateBubble {
     0% {
-        margin-top: 1000px;
+        margin-top: 400px;
     }
     100% {
         margin-top: -100%;
@@ -212,7 +232,7 @@ justify-content: center;
 
 @-moz-keyframes animateBubble {
     0% {
-        margin-top: 1000px;
+        margin-top: 400px;
     }
     100% {
         margin-top: -100%;
@@ -221,7 +241,7 @@ justify-content: center;
 
 @keyframes animateBubble {
     0% {
-        margin-top: 1000px;
+        margin-top: 400px;
     }
     100% {
         margin-top: -100%;

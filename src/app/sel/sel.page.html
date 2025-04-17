@@ -1,0 +1,142 @@
+<ion-header [translucent]="false"  class="hidden-xs hidden-lg" >
+  <ion-toolbar mode="ios" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Retour"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Calculateur de sel</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+  <ion-row justify-content-center>
+      <ion-col sizeLg="3" sizeMd="3" sizeXs="12" >
+      </ion-col>
+      <ion-col sizeLg="6" sizeMd="6" sizeXs="12" >
+  
+        <form [formGroup]="onRecordForm" (ngSubmit)="submitForm()" novalidate class="list-form" >
+             
+              <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+              <h4> Taux de sel relevé  </h4>
+              <small>Le taux de sel actuel est la concentration de sel dans l'eau en grammes par litre.</small>
+              </ion-col>
+
+
+               <ion-row >
+                <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+                   <ion-item class="roundedInput">
+                    <ion-input type="number" [(ngModel)]="salt_current" formControlName="salt_current" max="0"  min="1000">  </ion-input>
+                  </ion-item>
+                </ion-col>
+                <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+                   <h4 color="primary">  g/m3 </h4>
+                </ion-col>
+               </ion-row>
+
+
+
+
+               <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+                <h4> Taux de sel requis </h4>
+                <small>Indiquez le taux de sel requis en fonction des spécifications de votre électrolyseur.</small>
+                </ion-col>
+
+
+               <ion-row >
+               <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+                   <ion-item class="roundedInput">
+                    <ion-input type="number" [(ngModel)]="salt_requis" formControlName="salt_requis" max="0"  min="1000">  </ion-input>
+                  </ion-item>
+                </ion-col>
+
+
+                <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+                  <h4 color="primary">  g/m3 </h4>
+               </ion-col>
+               </ion-row>
+
+
+            <ion-button type="submit" color="secondary" expand="block" style="text-transform:none!important;" *ngIf="!showSelToadd&&!showWaterToremove&&!showWaterSurface"> Calculer </ion-button>
+        </form>
+
+        <div *ngIf="showSelToadd">
+        <ion-col sizeLg="12" sizeMd="12" sizeXs="12" *ngIf="showSelToadd">
+          <h4> Quantité de sel à ajouter </h4>
+          <small>Pour des sacs de 25 kg</small>
+          </ion-col>
+
+
+
+         <ion-row >
+         <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+             <ion-item class="roundedInput-full">
+              <ion-input type="number" [(ngModel)]="setSaltToAdd"  >  </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+            <h4 color="primary">  Kg de sel  </h4>
+         </ion-col>
+         </ion-row>
+
+
+         <ion-row >
+          <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+              <ion-item class="roundedInput-full">
+               <ion-input type="number" [(ngModel)]="setBagsRequired"  >  </ion-input>
+             </ion-item>
+           </ion-col>
+           <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+             <h4 color="primary">  sacs de sel  </h4>
+          </ion-col>
+          </ion-row>
+        </div>
+
+         <div *ngIf="showWaterSurface">
+
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" >
+            <h4> Surface de la piscine ( en m2 ) </h4>
+            <small> Indiquez la surface totale de votre piscine en mètres carrés (m²)</small>
+          </ion-col>
+  
+          <ion-row >
+            <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+                <ion-item class="roundedInput">
+                 <ion-input type="number" [(ngModel)]="poolSurface"  >  </ion-input>
+               </ion-item>
+             </ion-col>
+             <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+               <h4 color="primary"> m²</h4>
+            </ion-col>
+          </ion-row>
+        </div>
+
+
+
+        <ion-button type="submit" color="secondary" expand="block" style="text-transform:none!important;" *ngIf="showWaterSurface"    (click)="calculateWaterToRemove()"> Calculer </ion-button>
+
+          <ion-col sizeLg="12" sizeMd="12" sizeXs="12" *ngIf="setWaterToRemove>0">
+            <h4> Hauteur d'eau à retirer </h4>
+          </ion-col>
+  
+           <ion-row *ngIf="showWaterToremove">
+           <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+               <ion-item class="roundedInput-full">
+                <ion-input type="number" [(ngModel)]="setWaterToRemove"  >  </ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col sizeLg="6" sizeMd="6" sizeXs="6" >
+              <h4 color="primary">  cm</h4>
+           </ion-col>
+           </ion-row>
+  
+     
+
+          <ion-button (click)="reset()"  type="submit" color="light" expand="block" style="text-transform:none!important;" *ngIf="showSelToadd||showWaterToremove"> Recommencer </ion-button>
+
+
+
+    </ion-col>
+    <ion-col sizeLg="3" sizeMd="3" sizeXs="12" >
+    </ion-col>
+  </ion-row>
+</ion-content>
