@@ -49,13 +49,7 @@ import { CalculService } from 'src/providers/calcul-service';
     AuthGuard,
     IonModal,
     LocalService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true,
-    }
-  
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
 
   
   ],
